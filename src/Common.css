@@ -1,0 +1,24 @@
+.center-both {
+    /*设置元素绝对定位*/
+    position: absolute;
+    /*top 50%*/
+    top: 50%;
+    /*left 50%*/
+    left: 50%;
+    /*css3   transform 实现*/
+    transform: translate(-50%, -50%);
+}
+
+.center-horizontal {
+    display: flex;
+    justify-content: center; /*定义body的里的元素水平居中*/
+}
+
+.center-vertical {
+    /*设置元素绝对定位*/
+    position: absolute;
+    /*top 50%*/
+    top: 50%;
+    /*css3   transform 实现*/
+    transform: translate(0%, -50%);
+}
