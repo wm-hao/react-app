@@ -9,6 +9,10 @@ import List from "@material-ui/core/List";
 import Collapse from "@material-ui/core/Collapse";
 import withStyles from "@material-ui/core/styles/withStyles";
 import QueryBuilderOutlinedIcon from '@material-ui/icons/QueryBuilderOutlined';
+import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
+import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
+import BarChartIcon from '@material-ui/icons/BarChartOutlined';
 
 const styles = (theme) => ({
     root: {
@@ -52,10 +56,50 @@ class SideBar extends React.Component {
                 in: this.state['tradeRecordOpen'],
                 children: [
                     {
-                        text: '交易日志',
+                        text: '历史查询',
+                        icon: <QueryBuilderOutlinedIcon/>,
+                    },
+                    {
+                        text: '新增记录',
                         icon: <QueryBuilderOutlinedIcon/>,
                     }
                 ]
+            },
+            {
+                text: '交易日志',
+                icon: <EventNoteOutlinedIcon/>,
+                hasSecondItems: false,
+                handleClick: () => {
+                },
+                in: false,
+                children: []
+            },
+            {
+                text: '用户信息',
+                icon: <AccountBoxOutlinedIcon/>,
+                hasSecondItems: false,
+                handleClick: () => {
+                },
+                in: false,
+                children: []
+            },
+            {
+                text: '账户信息',
+                icon: <AccountBalanceWalletOutlinedIcon/>,
+                hasSecondItems: false,
+                handleClick: () => {
+                },
+                in: false,
+                children: []
+            },
+            {
+                text: '图表分析',
+                icon: <BarChartIcon/>,
+                hasSecondItems: false,
+                handleClick: () => {
+                },
+                in: false,
+                children: []
             }
         ];
         return (
@@ -65,7 +109,7 @@ class SideBar extends React.Component {
                         <ListItem button key={idx} onClick={item.handleClick}>
                             <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text}/>
-                            {item.hasSecondItems ? <ExpandLess/> : <ExpandMore/>}
+                            {item.hasSecondItems ? item.in ? <ExpandLess/> : <ExpandMore/> : ''}
                         </ListItem>
                         {item.hasSecondItems ?
                             <Collapse in={item.in} timeout="auto" unmountOnExit>

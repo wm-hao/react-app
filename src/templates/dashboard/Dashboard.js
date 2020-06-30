@@ -15,6 +15,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SideBar from './SideBar';
 import Avatar from '@material-ui/core/Avatar';
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Orders from "./Orders";
+import Paper from "@material-ui/core/Paper";
+import Deposits from "./Deposits";
+import Chart from "./Chart";
 
 function Copyright() {
     return (
@@ -142,13 +149,12 @@ class Dashboard extends React.Component {
         const {classes} = this.props;
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
         return (
-            // this.state.open && classes.menuButtonHidden,
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar
                     position="absolute"
                     className={clsx(classes.appBar, this.state.open && classes.appBarShift)}
-                    color={'primary'}
+                    color={'secondary'}
                 >
                     <Toolbar className={classes.toolbar} variant={'regular'}>
                         <IconButton
@@ -196,9 +202,8 @@ class Dashboard extends React.Component {
                     </div>
                     <Divider/>
                     <SideBar/>
-                    <Divider/>
                 </Drawer>
-                {/*<main className={classes.content}>
+                <main className={classes.content}>
                     <div className={classes.appBarSpacer}/>
                     <Container maxWidth="lg" className={classes.container}>
                         <Grid container spacing={3}>
@@ -225,7 +230,7 @@ class Dashboard extends React.Component {
                             <Copyright/>
                         </Box>
                     </Container>
-                </main>*/}
+                </main>
             </div>
         );
     }
