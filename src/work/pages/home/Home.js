@@ -18,7 +18,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
-import { renderRoutes } from 'react-router-config';
+import {renderRoutes} from 'react-router-config';
 import Index from "./Index";
 import MaterialUI from "../../../demo/MaterialUI";
 
@@ -207,15 +207,16 @@ class Home extends React.Component {
                     </div>
                     <Divider/>
                     <SideBar/>
-                    <Box style={{flexGrow:1}}/>
-                    <Button variant={'contained'} style={{margin: 10}} color={"secondary"}>退出登录</Button>
+                    <Box style={{flexGrow: 1}}/>
+                    {this.state.open ?
+                        <Button variant={'contained'} style={{margin: 10}} color={"secondary"}>退出登录</Button> : ''}
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer}/>
-                    <Router>
-                        <Route path={'/home'} component={Index}/>
-                        <Route path={'/home1'} component={MaterialUI}/>
-                    </Router>
+                    <div>
+                        {this.props.children}
+                    </div>
+
 
                     <Box pt={4}>
                         <Copyright/>

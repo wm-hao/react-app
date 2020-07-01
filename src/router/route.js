@@ -32,7 +32,7 @@ const routes = [
         exact: true,
         routes: [
             {
-                path: '/home',
+                path: '/home/index',
                 exact: true,
                 component: Index
             }

@@ -42,7 +42,6 @@ class SideBar extends React.Component {
     }
 
     handleToggle = (anchor) => {
-        console.log('a');
         this.setState(state => {
             return {
                 [anchor]: !state[anchor]
@@ -60,7 +59,7 @@ class SideBar extends React.Component {
                 handleClick: () => {
                 },
                 in: false,
-                link: '/home1',
+                link: '/dashboard',
                 children: []
             },
             {
@@ -69,17 +68,17 @@ class SideBar extends React.Component {
                 hasSecondItems: true,
                 handleClick: () => this.handleToggle('tradeRecordOpen'),
                 in: this.state['tradeRecordOpen'],
-                link: '/home/other',
+                link: '#',
                 children: [
                     {
                         text: '历史查询',
                         icon: <QueryBuilderOutlinedIcon/>,
-                        link: '#',
+                        link: '/dashboard/tradeHistory',
                     },
                     {
                         text: '新增记录',
                         icon: <AddCircleOutlineOutlinedIcon/>,
-                        link: '#',
+                        link: '/dashboard/tradeEdit',
                     }
                 ]
             },
@@ -137,7 +136,7 @@ class SideBar extends React.Component {
                             <Collapse in={item.in} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {item.children.map((secItem, secItemIdx) => (
-                                        <ListItemLink button className={classes.nested} key={secItemIdx} href={item.link}>
+                                        <ListItemLink button className={classes.nested} key={secItemIdx} href={secItem.link}>
                                             <ListItemIcon>
                                                 {secItem.icon}
                                             </ListItemIcon>
