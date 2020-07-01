@@ -11,11 +11,12 @@ const useStyles = makeStyles({
         color: 'white',
         height: 48,
         padding: '0 30px',
+        margin: '10px'
     },
 });
 
 export default function MyButton(props) {
     const classes = useStyles();
-    return <Button className={classes.root} onClick={props.handleClick}>Hook</Button>;
+    return <Button className={classes.root} onClick={props.handleClick}>退出登录</Button>;
 }
 

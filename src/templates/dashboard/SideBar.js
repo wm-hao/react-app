@@ -13,7 +13,8 @@ import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
 import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 import BarChartIcon from '@material-ui/icons/BarChartOutlined';
-
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 const styles = (theme) => ({
     root: {
         width: '100%',
@@ -61,7 +62,7 @@ class SideBar extends React.Component {
                     },
                     {
                         text: '新增记录',
-                        icon: <QueryBuilderOutlinedIcon/>,
+                        icon: <AddCircleOutlineOutlinedIcon/>,
                     }
                 ]
             },

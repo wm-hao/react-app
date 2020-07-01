@@ -22,6 +22,9 @@ import Orders from "./Orders";
 import Paper from "@material-ui/core/Paper";
 import Deposits from "./Deposits";
 import Chart from "./Chart";
+import RedButton from "../../demo/RedButton";
+import MyButton from "../../demo/MyButton";
+import Button from "@material-ui/core/Button";
 
 function Copyright() {
     return (
@@ -202,24 +205,23 @@ class Dashboard extends React.Component {
                     </div>
                     <Divider/>
                     <SideBar/>
+                    <Box style={{flexGrow:1}}/>
+                    <Button variant={'contained'} style={{margin: 10}} color={"secondary"}>退出登录</Button>
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer}/>
                     <Container maxWidth="lg" className={classes.container}>
                         <Grid container spacing={3}>
-                             Chart
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper className={fixedHeightPaper}>
                                     <Chart/>
                                 </Paper>
                             </Grid>
-                             Recent Deposits
                             <Grid item xs={12} md={4} lg={3}>
                                 <Paper className={fixedHeightPaper}>
                                     <Deposits/>
                                 </Paper>
                             </Grid>
-                             Recent Orders
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
                                     <Orders/>
