@@ -2,7 +2,8 @@ import Login from "../work/Login";
 import NotFound from "../work/NotFound";
 import SignUp from "../work/SignUp";
 import Forgot from "../work/Forgot";
-import Dashboard from "../templates/dashboard/Dashboard";
+import Home from "../work/pages/home/Home";
+import Index from "../work/pages/home/Index";
 
 const routes = [
     {
@@ -27,13 +28,20 @@ const routes = [
     },
     {
         path: '/home',
-        component: Dashboard,
-        exact: true
+        component: Home,
+        exact: true,
+        routes: [
+            {
+                path: '/home',
+                exact: true,
+                component: Index
+            }
+        ]
     },
     // 此处放最后，NOT FOUND
-    {
-        component: NotFound,
-    }
+    // {
+    //     component: NotFound,
+    // }
 ];
 
 export default routes;

@@ -9,20 +9,19 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import SideBar from './SideBar';
+import SideBar from '../SideBar';
 import Avatar from '@material-ui/core/Avatar';
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Orders from "./Orders";
-import Paper from "@material-ui/core/Paper";
-import Deposits from "./Deposits";
-import Chart from "./Chart";
 import Button from "@material-ui/core/Button";
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+
+import { renderRoutes } from 'react-router-config';
+import Index from "./Index";
+import MaterialUI from "../../../demo/MaterialUI";
+
 
 function Copyright() {
     return (
@@ -118,13 +117,16 @@ const styles = theme => ({
     },
 });
 
-class Dashboard extends React.Component {
+class Home extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            open: true
+            open: true,
+            route: props.route,
+            component: Index
         };
+        console.log(this.state);
         this.handleDrawerClose = this.handleDrawerClose.bind(this);
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.handleToggleDrawer = this.handleToggleDrawer.bind(this);
@@ -146,12 +148,10 @@ class Dashboard extends React.Component {
         })
     };
 
-    componentWillMount() {
-        console.log('hahah');
-    }
 
     render() {
         const {classes} = this.props;
+        const route = this.state.route;
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
         return (
             <div className={classes.root}>
@@ -212,32 +212,18 @@ class Dashboard extends React.Component {
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer}/>
-                    <Container maxWidth="lg" className={classes.container}>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} md={8} lg={9}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Chart/>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits/>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Paper className={classes.paper}>
-                                    <Orders/>
-                                </Paper>
-                            </Grid>
-                        </Grid>
-                        <Box pt={4}>
-                            <Copyright/>
-                        </Box>
-                    </Container>
+                    <Router>
+                        <Route path={'/home'} component={Index}/>
+                        <Route path={'/home1'} component={MaterialUI}/>
+                    </Router>
+
+                    <Box pt={4}>
+                        <Copyright/>
+                    </Box>
                 </main>
             </div>
         );
     }
 }
 
-export default withStyles(styles)(Dashboard);
+export default withStyles(styles)(Home);

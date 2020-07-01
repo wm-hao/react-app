@@ -15,6 +15,7 @@ import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceW
 import BarChartIcon from '@material-ui/icons/BarChartOutlined';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import {Link} from 'react-router-dom';
 const styles = (theme) => ({
     root: {
         width: '100%',
@@ -59,7 +60,7 @@ class SideBar extends React.Component {
                 handleClick: () => {
                 },
                 in: false,
-                link: '/home',
+                link: '/home1',
                 children: []
             },
             {
@@ -68,7 +69,7 @@ class SideBar extends React.Component {
                 hasSecondItems: true,
                 handleClick: () => this.handleToggle('tradeRecordOpen'),
                 in: this.state['tradeRecordOpen'],
-                link: '#',
+                link: '/home/other',
                 children: [
                     {
                         text: '历史查询',
@@ -127,7 +128,7 @@ class SideBar extends React.Component {
             <List>
                 {listItems.map((item, idx) => (
                     <div key={idx}>
-                        <ListItemLink button key={idx} onClick={item.handleClick} href={'/login'}>
+                        <ListItemLink button key={idx} onClick={item.handleClick} href={item.link}>
                             <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text}/>
                             {item.hasSecondItems ? item.in ? <ExpandLess/> : <ExpandMore/> : ''}
@@ -136,7 +137,7 @@ class SideBar extends React.Component {
                             <Collapse in={item.in} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {item.children.map((secItem, secItemIdx) => (
-                                        <ListItemLink button className={classes.nested} key={secItemIdx}>
+                                        <ListItemLink button className={classes.nested} key={secItemIdx} href={item.link}>
                                             <ListItemIcon>
                                                 {secItem.icon}
                                             </ListItemIcon>
@@ -154,3 +155,4 @@ class SideBar extends React.Component {
 }
 
 export default withStyles(styles)(SideBar);
+
